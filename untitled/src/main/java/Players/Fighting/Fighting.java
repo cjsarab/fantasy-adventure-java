@@ -1,19 +1,23 @@
 package Players.Fighting;
 
+import Enemies.Enemy;
+import Enemies.Troll;
 import Players.Fighting.Behaviours.IHit;
-import Players.Fighting.Weapons.Sword;
 import Players.Player;
 
 public abstract class Fighting extends Player {
     private IHit weapon;
 
-    public Fighting(String name, int hp, IHit weapon){
-        super(name, hp);
+    public Fighting(String name, int hp, int defence, IHit weapon){
+        super(name, hp, defence);
         this.weapon = weapon;
     }
 
-    public int attack(){
-        return this.weapon.getDamage();
+    public void attack(Enemy enemy){
+        int damageDealt = this.weapon.getDamage() - enemy.getDefence();
+        if(damageDealt>0){
+            enemy.setHp(enemy.getHp()- damageDealt );
+        }
     }
 
     public void changeWeapon(IHit newWeapon){
@@ -22,5 +26,9 @@ public abstract class Fighting extends Player {
 
     public IHit getWeapon() {
         return this.weapon;
+    }
+
+    public String getPlayerClass(){
+        return "Fighting";
     }
 }

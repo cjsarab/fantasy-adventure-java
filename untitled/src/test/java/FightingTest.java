@@ -1,3 +1,4 @@
+import Enemies.Troll;
 import Players.Fighting.Barbarian;
 import Players.Fighting.Dwarf;
 import Players.Fighting.Knight;
@@ -17,18 +18,23 @@ public class FightingTest {
 
     Sword sword;
 
+    Troll troll;
+
     @Before
     public void before(){
         axe = new Axe("Balin's Axe",6);
-        dwarf = new Dwarf("Gimli", 22, axe);
+        dwarf = new Dwarf("Gimli", 22, 0, axe);
 
         sword = new Sword("Sting", 4);
+
+        troll = new Troll("Bert", 30, 4, 1);
 
     }
 
     @Test
     public void canDealDamage(){
-        assertEquals(6, dwarf.attack());
+        dwarf.attack(troll);
+        assertEquals(25, troll.getHp());
     }
 
     @Test

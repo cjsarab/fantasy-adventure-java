@@ -1,15 +1,18 @@
 package Players.Magic;
 
-import Players.Fighting.Behaviours.IHit;
 import Players.Magic.Behaviours.ICast;
+import Players.Magic.MythicalCreatures.MythicalCreature;
 import Players.Player;
 
 public abstract class Magic extends Player {
     private ICast spell;
+    private MythicalCreature mythicalCreature;
 
-    public Magic(String name, int hp, ICast spell){
-        super(name, hp);
+    public Magic(String name, int hp, int defence, ICast spell, MythicalCreature mythicalCreature){
+        super(name, hp, defence);
         this.spell = spell;
+        this.mythicalCreature=mythicalCreature;
+        this.setDefence(this.getDefence() + this.getDefenceFromMythicalCreature());
     }
 
     public int castSpell(){
@@ -22,6 +25,14 @@ public abstract class Magic extends Player {
 
     public ICast getSpell() {
         return this.spell;
+    }
+
+    public int getDefenceFromMythicalCreature(){
+        return this.mythicalCreature.getDefence();
+    }
+
+    public String getPlayerClass(){
+        return "Magic";
     }
 
 }
