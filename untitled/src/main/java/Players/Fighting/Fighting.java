@@ -10,4 +10,8 @@ public abstract class Fighting extends Player {
         super(name, hp);
         this.weapon = weapon;
     }
+
+    public int attack(){
+        return this.weapon.getDamage();
+    }
 }

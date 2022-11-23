@@ -1,6 +1,8 @@
 package Players.Fighting.Weapons;
 
-public abstract class Weapon {
+import Players.Fighting.Behaviours.IHit;
+
+public abstract class Weapon implements IHit {
     private String name;
     private int damage;
     public Weapon(String name, int damage){
@@ -8,6 +10,13 @@ public abstract class Weapon {
         this.damage=damage;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
+    public int getDamage(){
+        return this.damage;
+    }
 
 
 }
