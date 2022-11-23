@@ -1,6 +1,7 @@
 package Players.Fighting;
 
 import Players.Fighting.Behaviours.IHit;
+import Players.Fighting.Weapons.Sword;
 import Players.Player;
 
 public abstract class Fighting extends Player {
@@ -13,5 +14,13 @@ public abstract class Fighting extends Player {
 
     public int attack(){
         return this.weapon.getDamage();
+    }
+
+    public void changeWeapon(IHit newWeapon){
+        this.weapon=newWeapon;
+    }
+
+    public IHit getWeapon() {
+        return this.weapon;
     }
 }
