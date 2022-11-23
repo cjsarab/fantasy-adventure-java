@@ -4,6 +4,7 @@ import Enemies.Enemy;
 import Enemies.Troll;
 import Players.Fighting.Behaviours.IHit;
 import Players.Player;
+import Rooms.EnemyRoom;
 
 public abstract class Fighting extends Player {
     private IHit weapon;
@@ -13,10 +14,14 @@ public abstract class Fighting extends Player {
         this.weapon = weapon;
     }
 
-    public void attack(Enemy enemy){
+    public void attack(EnemyRoom enemyRoom){
+        Enemy enemy = enemyRoom.getEnemy();
         int damageDealt = this.weapon.getDamage() - enemy.getDefence();
         if(damageDealt>0){
             enemy.setHp(enemy.getHp()- damageDealt );
+            if(enemy.getHp()<0){
+                enemy.setHp(0);
+            }
         }
     }
 

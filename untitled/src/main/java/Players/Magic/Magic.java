@@ -1,8 +1,10 @@
 package Players.Magic;
 
+import Enemies.Enemy;
 import Players.Magic.Behaviours.ICast;
 import Players.Magic.MythicalCreatures.MythicalCreature;
 import Players.Player;
+import Rooms.EnemyRoom;
 
 public abstract class Magic extends Player {
     private ICast spell;
@@ -15,8 +17,16 @@ public abstract class Magic extends Player {
         this.setDefence(this.getDefence() + this.getDefenceFromMythicalCreature());
     }
 
-    public int castSpell(){
-        return this.spell.getDamage();
+    public void castSpell(EnemyRoom enemyRoom){
+
+        Enemy enemy = enemyRoom.getEnemy();
+        int damageDealt = this.spell.getDamage() - enemy.getDefence();
+        if(damageDealt>0){
+            enemy.setHp(enemy.getHp()- damageDealt );
+            if(enemy.getHp()<0){
+                enemy.setHp(0);
+            }
+        }
     }
 
     public void changeSpell(ICast newSpell){
@@ -34,5 +44,8 @@ public abstract class Magic extends Player {
     public String getPlayerClass(){
         return "Magic";
     }
+
+
+
 
 }

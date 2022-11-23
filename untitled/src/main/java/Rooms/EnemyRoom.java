@@ -9,4 +9,17 @@ public class EnemyRoom extends Room{
         super(name);
         this.enemy=enemy;
     }
+
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    public Boolean isRoomComplete(){
+        if(this.enemy.getHp() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

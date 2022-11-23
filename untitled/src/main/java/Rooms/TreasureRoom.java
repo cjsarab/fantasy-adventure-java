@@ -9,4 +9,13 @@ public class TreasureRoom extends Room {
         this.treasureName=treasureName;
         this.treasureValue=treasureValue;
     }
+
+
+    public Boolean isRoomComplete(){
+        if(this.treasureValue == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

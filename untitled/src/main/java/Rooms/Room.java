@@ -13,4 +13,10 @@ public abstract class Room {
         this.isPartyPresent= isPartyPresent;
     }
 
+    public Boolean getIsPartyPresent() {
+        return this.isPartyPresent;
+    }
+
+    public abstract Boolean isRoomComplete();
+
 }

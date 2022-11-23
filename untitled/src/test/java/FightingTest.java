@@ -4,6 +4,7 @@ import Players.Fighting.Dwarf;
 import Players.Fighting.Knight;
 import Players.Fighting.Weapons.Axe;
 import Players.Fighting.Weapons.Sword;
+import Rooms.EnemyRoom;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class FightingTest {
     Sword sword;
 
     Troll troll;
-
+    EnemyRoom enemyRoom;
     @Before
     public void before(){
         axe = new Axe("Balin's Axe",6);
@@ -27,13 +28,15 @@ public class FightingTest {
 
         sword = new Sword("Sting", 4);
 
-        troll = new Troll("Bert", 30, 4, 1);
+
+        troll = new Troll("Bert", 30, 3, 1);
+        enemyRoom = new EnemyRoom("The Vault of Terror!", troll);
 
     }
 
     @Test
     public void canDealDamage(){
-        dwarf.attack(troll);
+        dwarf.attack(enemyRoom);
         assertEquals(25, troll.getHp());
     }
 
